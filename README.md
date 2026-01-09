@@ -57,6 +57,21 @@ The system operates on a 4-stage pipeline defined in [ARCHITECTURE.md](ARCHITECT
 
 ---
 
+## 📥 Installation & Setup
+
+To run this project locally, follow these simple steps:
+
+1.  **Clone the Repository**
+    ```bash
+    git clone https://github.com/GVN2307/Fedx-Flex-pay-AI.git
+    cd Fedx-Flex-pay-AI
+    ```
+
+2.  **No Dependencies Required**
+    - The project uses standard Python (3.x) and vanilla HTML/JS. No `pip install` or `npm install` needed!
+
+---
+
 ## 🚦 How to Run
 
 ### 1. Web Interface (Recommended)
