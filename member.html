@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FedEx Flex-Pay AI | Member Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        .sidebar {
+            background: #333;
+            color: white;
+        }
+
+        .sidebar .logo h2 {
+            color: white;
+        }
+
+        .sidebar nav ul li a {
+            color: #ccc;
+        }
+
+        .sidebar nav ul li.active a,
+        .sidebar nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        /* Single Card Centered */
+        .member-container {
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar (Simplified for Member) -->
+        <aside class="sidebar" style="width: 200px;">
+            <div class="logo">
+                <h2>FedEx <br><small style="font-size:0.8rem; font-weight:400; color:#ddd;">Member Portal</small></h2>
+            </div>
+            <nav>
+                <ul>
+                    <li class="active"><a href="#"><i class="fas fa-file-invoice-dollar"></i> My Account</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
+                    <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1 id="welcomeMsg">Welcome back</h1>
+                <div class="date-display" id="currentDate"></div>
+            </header>
+
+            <section class="member-container">
+                <div id="memberCardArea">
+                    <!-- Dynamic Member Card Here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/data.js"></script>
+    <script src="assets/js/auth.js"></script> <!-- Included for logout logic -->
+    <script src="assets/js/member.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+===================================================================
+FedEx Flex-Pay AI - TESTING GUIDE
+===================================================================
+
+This guide explains how to verify the functionality of the FedEx Flex-Pay AI system, including the Web Interface and the Backend Logic.
+
+-------------------------------------------------------------------
+1. FRONTEND TESTING (Web Interface)
+-------------------------------------------------------------------
+
+STEP 1: Open the Application
+   - Navigate to the project folder.
+   - Open the file `login.html` in your web browser (Chrome, Edge, etc.).
+
+STEP 2: Test Admin Access (Manager View)
+   - Username: admin
+   - Password: admin
+   - Action: Click "Secure Login".
+   - Expected Result:
+     1. Redirects to `index.html` (Dashboard).
+     2. You see "Projected Business Impact" cards (Cost to Collect / CLV).
+     3. You see a list of ALL 10 Accounts.
+     4. "AI Insights" at the top show summary data.
+
+STEP 3: Test User Access (Member Portal)
+   - Go back to `login.html`.
+   - Username: A001 (Logistics Solutions Inc.)
+   - Password: password
+   - Action: Click "Secure Login".
+   - Expected Result:
+     1. Redirects to `member.html`.
+     2. Shows "Welcome, Logistics Solutions Inc.".
+     3. Shows ONE account card with a Green "Good History" style.
+     4. Displays the unique discount offer: "Code: EARLYBIRD3".
+
+   - Try another user:
+     - Username: A006 (Tech Stream LLC)
+     - Password: password
+     - Result: Shows a Red "Poor History" card with a polite payment reminder.
+
+-------------------------------------------------------------------
+2. BACKEND TESTING (Python Logic)
+-------------------------------------------------------------------
+
+Prerequisites: Python installed.
+
+STEP 1: Run the Main Analysis Script
+   - Open a terminal/command prompt.
+   - Navigate to the `backend` folder:
+     cd "path/to/FedEx Flex-Pay AI/backend"
+   - Run the command:
+     python flex_pay.py
+   - Expected Result: The script prints a report for all 10 accounts, showing the AI Suggestion, Discount Code (if eligible), and the full drafted email message.
+
+STEP 2: Run Unit Tests
+   - In the same `backend` folder, run:
+     python tests.py
+   - Expected Result: "OK" (All tests passed). This confirms that:
+     - Discount logic works (Good vs Fair vs Poor).
+     - Anniversary logic works (Founders Day detection).
+     - Message tones are correct.
+
+-------------------------------------------------------------------
+3. FILE STRUCTURE REFERENCE
+-------------------------------------------------------------------
+- /login.html           -> Entry point
+- /index.html           -> Admin Dashboard
+- /member.html          -> User Portal
+- /assets/js/data.js    -> Shared mock data for 10 accounts
+- /backend/flex_pay.py  -> Core AI logic (Python)
+- /backend/input_data.json -> Source data for Python script

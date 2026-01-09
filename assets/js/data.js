@@ -1,0 +1,83 @@
+// Shared Mock Data
+const accounts = [
+    {
+        id: "A001",
+        name: "Logistics Solutions Inc.",
+        member_since: "2020-05-10",
+        current_balance: 150.00,
+        due_date: "2025-01-05",
+        payment_history: "Good"
+    },
+    {
+        id: "A002",
+        name: "Quick Ship Retail",
+        member_since: "2023-11-20",
+        current_balance: 45.50,
+        due_date: "2024-12-25",
+        payment_history: "Fair"
+    },
+    {
+        id: "A003",
+        name: "Global Trade Partners",
+        member_since: "2018-03-15",
+        current_balance: 0.00,
+        due_date: "2025-02-01",
+        payment_history: "Good"
+    },
+    {
+        id: "A004",
+        name: "FastTrack Delivery",
+        member_since: "2024-02-01",
+        current_balance: 850.00,
+        due_date: "2024-11-30",
+        payment_history: "Poor"
+    },
+    {
+        id: "A005",
+        name: "Urban Outfitters Local",
+        member_since: "2019-06-12",
+        current_balance: 120.75,
+        due_date: "2025-01-10",
+        payment_history: "Good"
+    },
+    {
+        id: "A006",
+        name: "Tech Stream LLC",
+        member_since: "2022-09-01",
+        current_balance: 3400.00,
+        due_date: "2024-10-15",
+        payment_history: "Poor"
+    },
+    {
+        id: "A007",
+        name: "Green Earth Goods",
+        member_since: "2021-01-20",
+        current_balance: 55.00,
+        due_date: "2025-01-08",
+        payment_history: "Fair"
+    },
+    {
+        id: "A008",
+        name: "Summit Gear",
+        member_since: "2015-11-05",
+        current_balance: 200.00,
+        due_date: "2025-01-02",
+        payment_history: "Good"
+    },
+    {
+        id: "A009",
+        name: "Rapid Response Medics",
+        member_since: "2023-04-14",
+        current_balance: 0.00,
+        due_date: "2025-02-15",
+        payment_history: "Good"
+    },
+    {
+        id: "A010",
+        name: "Cornerstone Books",
+        member_since: "2020-08-30",
+        current_balance: 75.25,
+        due_date: "2024-12-20",
+        payment_history: "Fair"
+    }
+];

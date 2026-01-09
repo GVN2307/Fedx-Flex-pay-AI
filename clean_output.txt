@@ -1,0 +1,35 @@
+--- FedEx Flex-Pay AI Report ---
+
+Account ID: A001
+Suggestion: Pay now to save!
+Discount Code: EARLYBIRD3
+Message Preview:
+--------------------
+Dear Member,
+
+We noticed that your account has a balance of $150.0 which was due on 2025-01-05.
+
+As a valued member with a great history, we'd like to help. Use code 'EARLYBIRD3' to receive a 3% discount if you pay within the next 48 hours.
+
+We appreciate your partnership.
+
+Sincerely,
+FedEx Flex-Pay Team
+--------------------
+
+
+Account ID: A002
+Suggestion: Please update your payment.
+Message Preview:
+--------------------
+Dear Member,
+
+We noticed that your account has a balance of $45.5 which was due on 2024-12-25.
+
+We understand that things get busy. Please let us know if you need to arrange a flexible payment schedule.
+
+Sincerely,
+FedEx Flex-Pay Team
+--------------------
+
+

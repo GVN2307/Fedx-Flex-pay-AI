@@ -1,0 +1,12 @@
+--- Testing Anniversary Logic (April 17th) ---
+Details for TEST_001:
+Dear Member,
+
+Happy Founders Day! In the spirit of celebration, we are waiving any late fees associated with your account today.
+
+We notice a balance of $100.0 was due on 2026-04-10.
+
+We understand that things get busy. Please let us know if you need to arrange a flexible payment schedule.
+
+Sincerely,
+FedEx Flex-Pay Team
