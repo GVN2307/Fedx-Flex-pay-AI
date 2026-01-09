@@ -7,14 +7,14 @@ The system follows a linear data processing pipeline:
 
 ```mermaid
 graph TD
-    A[Input Data (JSON)] -->|Ingestion| B(Data Parser)
+    A["Input Data (JSON)"] -->|Ingestion| B(Data Parser)
     B -->|Features| C{Risk Model}
     C -->|Score (0-100)| D[Decision Engine]
     D -->|Rule Check| E{Action Logic}
     E -->|Good History| F[Generate Discount Offer]
     E -->|Anniversary| G[Generate Fee Waiver]
     E -->|High Risk| H[Generate Empathetic Reminder]
-    F --> I[Output Interface (Dashboard/Email)]
+    F --> I["Output Interface (Dashboard/Email)"]
     G --> I
     H --> I
 ```
