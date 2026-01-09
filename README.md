@@ -2,8 +2,6 @@
 
 **An Intelligent Billing Agent designed to optimize the "Cost to Collect" while increasing "Customer Lifetime Value".**
 
-![FedEx Flex-Pay Dashboard](https://github.com/GVN2307/Fedx-Flex-pay-AI/assets/placeholder-image-if-available)
-*(Replace with actual screenshot if available)*
 
 ## 🚀 Overview
 
