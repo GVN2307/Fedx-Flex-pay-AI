@@ -17,17 +17,20 @@ function analyzeAccount(account) {
     // Logic 1: Discount
     if (account.payment_history === 'Good') {
         discountCode = "EARLYBIRD3";
-        messagePreview = `Offer 3% discount (Code: ${discountCode}) for early payment.`;
-        suggestion = "Apply Incentive";
+        messagePreview = `Premium Analysis: Customer ${account.name} shows high reliability. Recommending a 3% 'Loyalty Incentive' (Code: ${discountCode}) to accelerate cash flow while maintaining high satisfaction.`;
+        suggestion = "Apply Loyalty Discount";
+    } else if (account.payment_history === 'Fair') {
+        messagePreview = `Standard Analysis: Account shows moderate risk. Suggesting a friendly reminder with a link to our flexible payment portal.`;
+        suggestion = "Send Gentle Reminder";
     } else {
-        messagePreview = "Send standard empathetic payment reminder.";
-        suggestion = "Send Reminder";
+        messagePreview = "Urgent Analysis: High delinquency risk detected. Recommendation: Deploy empathetic collection outreach and offer a customized split-payment arrangement.";
+        suggestion = "Escalate to Specialist";
     }
 
     // Logic 2: Anniversary override
     if (isAnniversary) {
-        messagePreview = `Happy ${isAnniversary}! Waive late fees as a gesture of goodwill.`;
-        suggestion = "Waive Fees";
+        messagePreview = `🎉 ${isAnniversary} Event: System-wide fee waiver active. Recommendation: Send celebratory message and waive any late penalties for ${account.name}.`;
+        suggestion = "Execute Event Waiver";
     }
 
     return { suggestion, discountCode, messagePreview, riskScore };
@@ -84,19 +87,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
 
                     <div class="ai-suggestion">
-                        <h4><i class="fas fa-magic"></i> AI Recommendation</h4>
+                        <h4><i class="fas fa-robot"></i> Fedex AI Insights</h4>
                         <p>${escapeHtml(analysis.messagePreview)}</p>
                         ${analysis.discountCode ? `<div class="code-badge" style="background:#4D148C; color:white; padding:2px 6px; border-radius:4px; display:inline-block; font-size:0.75rem;">${escapeHtml(analysis.discountCode)}</div>` : ''}
                     </div>
                 </div>
                 <div class="card-actions">
-                    <button class="btn btn-primary" onclick="alert('Action Sent for ${escapeHtml(account.id)}')">
+                    <button class="btn btn-primary action-btn" data-account-id="${escapeHtml(account.id)}" data-suggestion="${escapeHtml(analysis.suggestion)}">
                         ${escapeHtml(analysis.suggestion)}
                     </button>
                 </div>
             `;
 
             grid.appendChild(card);
+        });
+
+        // CSP-Compliant Event Listener
+        grid.addEventListener('click', (e) => {
+            const btn = e.target.closest('.action-btn');
+            if (btn) {
+                const accountId = btn.getAttribute('data-account-id');
+                const suggestion = btn.getAttribute('data-suggestion');
+                alert(`AI Agent: Successfully executed '${suggestion}' for account ${accountId}. Process synced to blockchain ledger.`);
+            }
         });
     }
 });

@@ -12,16 +12,19 @@ function analyzeAccount(account) {
 
     if (account.payment_history === 'Good') {
         discountCode = "EARLYBIRD3";
-        messagePreview = `Great news! Because of your excellent history, you are eligible for a 3% discount (Code: ${discountCode}) if you pay now.`;
-        suggestion = "Pay Now & Save";
+        messagePreview = `Hello ${account.name}! Our AI system has identified your account for a **Loyalty Advantage**. Because of your consistent 'Good' standing, you can unlock a 3% discount (Code: **${discountCode}**) by completing your payment today.`;
+        suggestion = "Pay Now & Save 3%";
+    } else if (account.payment_history === 'Fair') {
+        messagePreview = `Greetings. We've detected an upcoming balance. To ensure uninterrupted service, we recommend clearing your balance or setting up an automated payment schedule today.`;
+        suggestion = "Resolve Balance";
     } else {
-        messagePreview = "We noticed an outstanding balance. Please update your payment method or contact us for a flexible plan.";
-        suggestion = "Update Payment";
+        messagePreview = "Important Notification: Your account requires immediate attention. Our AI suggests setting up a flexible payment arrangement to bring your account back to good standing.";
+        suggestion = "Setup Flexible Plan";
     }
 
     if (isAnniversary) {
-        messagePreview = `Happy ${isAnniversary}! As a gift, we are waiving any potential late fees today.`;
-        suggestion = "View Account Status";
+        messagePreview = `✨ **Special Event: ${isAnniversary}** ✨ In celebration, FedEx is waiving all potential late fees for your account today. We appreciate your continued partnership.`;
+        suggestion = "Claim Event Credit";
     }
 
     return { suggestion, discountCode, messagePreview };
@@ -77,12 +80,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="ai-suggestion" style="background:${historyClass === 'good' ? '#f0fff4' : '#fff9f0'}; padding:1.5rem; border-radius:8px; border:1px dashed ${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))};">
                 <h4 style="color:${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))}; margin-bottom:10px;"><i class="fas fa-envelope-open-text"></i> Message for You</h4>
-                <p style="line-height:1.5;">${escapeHtml(analysis.messagePreview)}</p>
+                <p style="line-height:1.5;">${analysis.messagePreview}</p>
             </div>
 
-            <button class="btn btn-primary" style="width:100%; margin-top:1.5rem; padding:15px; font-size:1rem;" onclick="alert('Proceeding to payment gateway...')">
+            <button class="btn btn-primary action-btn" style="width:100%; margin-top:1.5rem; padding:15px; font-size:1rem;" data-suggestion="${escapeHtml(analysis.suggestion)}">
                 ${escapeHtml(analysis.suggestion)}
             </button>
         </div>
     `;
+
+    // CSP-Compliant Event Listener
+    area.addEventListener('click', (e) => {
+        const btn = e.target.closest('.action-btn');
+        if (btn) {
+            const suggestion = btn.getAttribute('data-suggestion');
+            alert(`Redirecting to secure portal for: ${suggestion}...`);
+        }
+    });
 });
