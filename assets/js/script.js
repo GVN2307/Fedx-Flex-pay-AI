@@ -1,6 +1,40 @@
 // AI Logic Constants
 const AI_Persona_Prefix = "[Flex-Pay AI]";
 
+/**
+ * Premium AI Analysis Engine
+ * Calculates risk vectors and generates empathetic billing strategies.
+ */
+function analyzeAccount(account) {
+    const riskScore = calculateRiskScore(account.payment_history, account.current_balance);
+    let suggestion = "";
+    let discountCode = null;
+    let messagePreview = "";
+
+    const today = new Date();
+    const eventKey = `${today.getMonth() + 1}-${today.getDate()}`;
+    const isAnniversary = typeof majorEvents !== 'undefined' ? majorEvents[eventKey] : null;
+
+    if (account.payment_history === 'Good') {
+        discountCode = "FLEX-PREMIUM-5";
+        messagePreview = `Strategic Insight: Your stellar payment history has unlocked a 5% optimization credit. Apply ${discountCode} to maximize your liquidity today.`;
+        suggestion = "Apply 5% Credit";
+    } else if (account.payment_history === 'Fair') {
+        messagePreview = `Operational Alert: We've detected minor friction in your payment cycle. Initiating a 'Soft-Landing' resolution to maintain your standing.`;
+        suggestion = "Schedule Resolution";
+    } else {
+        messagePreview = `Critical Priority: Account stability is below threshold. Our AI recommends shifting to a 'Resilience-Focused' flexible payment architecture.`;
+        suggestion = "Initiate Recovery Plan";
+    }
+
+    if (isAnniversary) {
+        messagePreview = `✨ [System Anniversary Sync] ${isAnniversary} detected. Deploying a specialized 'Loyalty Waiver' for your account today.`;
+        suggestion = "Claim Event Waiver";
+    }
+
+    return { suggestion, discountCode, messagePreview, riskScore };
+}
+
 // Render Main Dashboard or Accounts Table
 document.addEventListener('DOMContentLoaded', () => {
     // Check for admin session

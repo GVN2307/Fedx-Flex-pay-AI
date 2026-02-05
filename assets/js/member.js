@@ -2,24 +2,28 @@
 // Shared utils are loaded from utils.js
 
 // Logic
+/**
+ * Premium AI Analysis Engine - Member Portal Edition
+ */
 function analyzeAccount(account) {
+    const riskScore = calculateRiskScore(account.payment_history, account.current_balance);
     let suggestion = "";
     let discountCode = null;
     let messagePreview = "";
     const today = new Date();
     const eventKey = `${today.getMonth() + 1}-${today.getDate()}`;
-    const isAnniversary = majorEvents[eventKey];
+    const isAnniversary = typeof majorEvents !== 'undefined' ? majorEvents[eventKey] : null;
 
     if (account.payment_history === 'Good') {
-        discountCode = "EARLYBIRD3";
-        messagePreview = `Hello ${account.name}! Our AI system has identified your account for a **Loyalty Advantage**. Because of your consistent 'Good' standing, you can unlock a 3% discount (Code: **${discountCode}**) by completing your payment today.`;
-        suggestion = "Pay Now & Save 3%";
+        discountCode = "LOYALTY-V5";
+        messagePreview = `Hello ${account.name}! Our AI system has identified your account for a **Loyalty Advantage**. Because of your consistent 'Good' standing, you can unlock a 5% optimization credit (Code: **${discountCode}**) by completing your payment today.`;
+        suggestion = "Apply 5% Savings";
     } else if (account.payment_history === 'Fair') {
-        messagePreview = `Greetings. We've detected an upcoming balance. To ensure uninterrupted service, we recommend clearing your balance or setting up an automated payment schedule today.`;
+        messagePreview = `Greetings. We've detected an upcoming balance. To ensure uninterrupted service, we recommend clearing your balance or setting up an automated 'Soft-Landing' payment schedule today.`;
         suggestion = "Resolve Balance";
     } else {
-        messagePreview = "Important Notification: Your account requires immediate attention. Our AI suggests setting up a flexible payment arrangement to bring your account back to good standing.";
-        suggestion = "Setup Flexible Plan";
+        messagePreview = "Important Notification: Your account stability is below threshold. Our AI suggests setting up a 'Resilience-Focused' flexible payment arrangement to bring your account back to good standing.";
+        suggestion = "Setup Resilience Plan";
     }
 
     if (isAnniversary) {
@@ -27,7 +31,7 @@ function analyzeAccount(account) {
         suggestion = "Claim Event Credit";
     }
 
-    return { suggestion, discountCode, messagePreview };
+    return { suggestion, discountCode, messagePreview, riskScore };
 }
 
 document.addEventListener('DOMContentLoaded', () => {
