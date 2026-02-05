@@ -116,7 +116,7 @@ def main():
     input_file = os.path.join(script_dir, 'input_data.json')
     
     if not os.path.exists(input_file):
-        print(f"Error: {input_file} not found.")
+        print("Error: Input data file not found.")
         return
 
     with open(input_file, 'r') as f:
