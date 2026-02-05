@@ -29,17 +29,17 @@
             </div>
             <nav>
                 <ul>
-                    <li class="active"><a href="#"><i class="fas fa-home"></i> Dashboard</a></li>
-                    <li><a href="#"><i class="fas fa-users"></i> Accounts</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Analytics</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li class="active"><a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="accounts.html"><i class="fas fa-users"></i> Accounts</a></li>
+                    <li><a href="analytics.html"><i class="fas fa-chart-pie"></i> Analytics</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
                 </ul>
             </nav>
             <div class="user-profile">
                 <div class="avatar">AI</div>
                 <div class="info">
                     <p>System Online</p>
-                    <small>Billing Agent v1.0</small>
+                    <small>Billing Agent v1.2</small>
                 </div>
             </div>
         </aside>
@@ -47,7 +47,7 @@
         <!-- Main Content -->
         <main class="main-content">
             <header>
-                <h1>Dashboard Overview</h1>
+                <h1>Strategic Dashboard</h1>
                 <div class="date-display" id="currentDate"></div>
             </header>
 
@@ -58,56 +58,57 @@
                         <i class="fas fa-robot"></i>
                     </div>
                     <div class="text">
-                        <h3>AI Action Required</h3>
-                        <p>5 Accounts need review</p>
+                        <h3>Critical Focus</h3>
+                        <p>5 Review Pending</p>
                     </div>
                 </div>
                 <div class="card insight-card">
                     <div class="icon-box orange">
-                        <i class="fas fa-gift"></i>
+                        <i class="fas fa-bolt"></i>
                     </div>
                     <div class="text">
-                        <h3>Discount Eligibility</h3>
-                        <p>2 "Good" history matches</p>
+                        <h3>Optimization</h3>
+                        <p>2 Incentive Hits</p>
                     </div>
                 </div>
                 <div class="card insight-card">
                     <div class="icon-box green">
-                        <i class="fas fa-calendar-check"></i>
+                        <i class="fas fa-calendar-alt"></i>
                     </div>
                     <div class="text">
                         <h3>Event Radar</h3>
-                        <p>Approaching Founders Day</p>
+                        <p>Founders Day Near</p>
                     </div>
                 </div>
             </section>
 
             <!-- Business Impact Section -->
-            <section class="business-impact"
-                style="margin-bottom: 2rem; background: #fff; padding: 1.5rem; border-radius: var(--radius); box-shadow: var(--shadow);">
-                <h2 style="font-size: 1.2rem; margin-bottom: 1rem;"><i class="fas fa-chart-pie"
-                        style="color: var(--fedex-purple); margin-right: 10px;"></i> Projected Business Impact</h2>
-                <div style="display: flex; gap: 2rem;">
-                    <div style="flex: 1; border-right: 1px solid #eee;">
-                        <span style="display: block; color: var(--text-light); font-size: 0.9rem;">Cost to
-                            Collect</span>
-                        <strong style="font-size: 1.5rem; color: #00cc66;">&darr; 15%</strong>
-                        <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Reduced agent intervention time via
-                            AI automation.</p>
+            <section class="card glass-card" style="margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 2rem;"><i class="fas fa-atom"></i> Business Impact Engine</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;">
+                    <div style="border-right: 1px solid rgba(0,0,0,0.05); padding-right: 2rem;">
+                        <span
+                            style="display: block; color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Efficiency
+                            Gain</span>
+                        <strong style="font-size: 2.22rem; color: #008e43; letter-spacing: -1.5px;">15.4%</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 10px;">Automated collections
+                            have suppressed operational overhead by 15.4% this quarter.</p>
                     </div>
-                    <div style="flex: 1;">
-                        <span style="display: block; color: var(--text-light); font-size: 0.9rem;">Customer Lifetime
-                            Value (CLV)</span>
-                        <strong style="font-size: 1.5rem; color: var(--fedex-purple);">&uarr; 22%</strong>
-                        <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Increased retention through
-                            empathetic engagement.</p>
+                    <div>
+                        <span
+                            style="display: block; color: var(--text-light); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">Liquidity
+                            Vector</span>
+                        <strong
+                            style="font-size: 2.22rem; color: var(--fedex-purple); letter-spacing: -1.5px;">+22.8%</strong>
+                        <p style="font-size: 0.9rem; color: var(--text-light); margin-top: 10px;">Empathetic AI
+                            engagement has increased the customer lifetime value by 22.8%.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Active Accounts List -->
             <section class="accounts-section">
-                <h2><i class="fas fa-list-ul"></i> Priority Accounts</h2>
+                <h2><i class="fas fa-stream"></i> Priority Intervention Queue</h2>
                 <div class="account-grid" id="accountGrid">
                     <!-- Dynamic Account Cards will be injected here by JS -->
                 </div>

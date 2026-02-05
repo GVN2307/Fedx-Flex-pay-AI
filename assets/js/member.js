@@ -59,33 +59,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyClass = escapeHtml(account.payment_history.toLowerCase());
 
     area.innerHTML = `
-        <div class="account-card ${historyClass}" style="background:white; padding:2rem; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid ${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))}">
-            <div style="margin-bottom:1.5rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
-                <h3 style="font-size:1.5rem; color:#333;">Current Billing Status</h3>
-                <span class="badge ${historyClass}" style="margin-top:5px; display:inline-block; font-size:0.9rem;">${escapeHtml(account.payment_history)} Standing</span>
+        <div class="account-card ${historyClass}">
+            <div class="card-header">
+                <h3>Current Billing Status</h3>
+                <span class="badge ${historyClass}">${escapeHtml(account.payment_history)} Standing</span>
             </div>
             
-            <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
-                <span style="color:#666;">Account ID:</span>
-                <strong>${escapeHtml(account.id)}</strong>
-            </div>
-             <div style="display:flex; justify-content:space-between; margin-bottom:1rem;">
-                <span style="color:#666;">Balance Due:</span>
-                <strong style="font-size:1.2rem;">$${account.current_balance.toFixed(2)}</strong>
-            </div>
-             <div style="display:flex; justify-content:space-between; margin-bottom:2rem;">
-                <span style="color:#666;">Due Date:</span>
-                <strong>${escapeHtml(formatDate(account.due_date))}</strong>
-            </div>
+            <div class="card-body">
+                <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:1.5rem; background:rgba(0,0,0,0.02); padding:1rem; border-radius:12px;">
+                    <span style="font-size:0.85rem; font-weight:700; color:var(--text-light); text-transform:uppercase;">AI Stability Pulse</span>
+                    <div style="display:flex; align-items:center;">
+                        <div style="width:120px; height:8px; background:#e2e8f0; border-radius:10px; margin-right:12px; overflow:hidden;">
+                            <div style="width:${analysis.riskScore || 0}%; height:100%; background:${getRiskColor(analysis.riskScore || 0)};"></div>
+                        </div>
+                        <span style="font-weight:800; color:${getRiskColor(analysis.riskScore || 0)}; font-size:1rem;">${analysis.riskScore || 0}%</span>
+                    </div>
+                </div>
 
-            <div class="ai-suggestion" style="background:${historyClass === 'good' ? '#f0fff4' : '#fff9f0'}; padding:1.5rem; border-radius:8px; border:1px dashed ${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))};">
-                <h4 style="color:${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))}; margin-bottom:10px;"><i class="fas fa-envelope-open-text"></i> Message for You</h4>
-                <p style="line-height:1.5;">${analysis.messagePreview}</p>
-            </div>
+                <div class="detail-row">
+                    <span class="detail-label">Exposure:</span>
+                    <span class="detail-value" style="font-size:1.2rem;">$${account.current_balance.toFixed(2)}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Resolution Phase:</span>
+                    <span class="detail-value">${escapeHtml(formatDate(account.due_date))}</span>
+                </div>
 
-            <button class="btn btn-primary action-btn" style="width:100%; margin-top:1.5rem; padding:15px; font-size:1rem;" data-suggestion="${escapeHtml(analysis.suggestion)}">
-                ${escapeHtml(analysis.suggestion)}
-            </button>
+                <div class="ai-suggestion" style="margin-top:2rem;">
+                    <h4><i class="fas fa-envelope-open-text"></i> Personalized Insight</h4>
+                    <p>${analysis.messagePreview}</p>
+                </div>
+
+                <button class="btn btn-primary action-btn" style="width:100%; margin-top:2rem; padding:18px;" data-suggestion="${escapeHtml(analysis.suggestion)}">
+                    ${escapeHtml(analysis.suggestion)}
+                </button>
+            </div>
         </div>
     `;
 

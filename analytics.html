@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:;">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <title>FedEx Flex-Pay AI | Analytics</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h2><span class="fed">Fed</span><span class="ex">Ex</span> <span class="sub-logo">Flex-Pay AI</span>
+                </h2>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-th-large"></i> Dashboard</a></li>
+                    <li><a href="accounts.html"><i class="fas fa-users"></i> Accounts</a></li>
+                    <li class="active"><a href="analytics.html"><i class="fas fa-chart-pie"></i> Analytics</a></li>
+                    <li><a href="settings.html"><i class="fas fa-cog"></i> Settings</a></li>
+                </ul>
+            </nav>
+            <div class="user-profile">
+                <div class="avatar">AI</div>
+                <div class="info">
+                    <p>System Online</p>
+                    <small>Billing Agent v1.2</small>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <h1>Business Intelligence</h1>
+                <div class="date-display" id="currentDate"></div>
+            </header>
+
+            <div class="insights">
+                <div class="card">
+                    <div class="insight-card">
+                        <div class="icon-box purple">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="text">
+                            <h3>Projected CLV</h3>
+                            <p>+22% Growth</p>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height: 100px; margin-top: 1rem;">
+                        <div class="chart-bar" style="height: 40%;"></div>
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 50%;"></div>
+                        <div class="chart-bar" style="height: 80%;"></div>
+                        <div class="chart-bar" style="height: 70%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="insight-card">
+                        <div class="icon-box orange">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <div class="text">
+                            <h3>Cost Savings</h3>
+                            <p>$12,450.00</p>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height: 100px; margin-top: 1rem;">
+                        <div class="chart-bar" style="height: 30%;"></div>
+                        <div class="chart-bar" style="height: 45%;"></div>
+                        <div class="chart-bar" style="height: 60%;"></div>
+                        <div class="chart-bar" style="height: 55%;"></div>
+                        <div class="chart-bar" style="height: 75%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="insight-card">
+                        <div class="icon-box green">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="text">
+                            <h3>Resolution Rate</h3>
+                            <p>94.2%</p>
+                        </div>
+                    </div>
+                    <div class="chart-container" style="height: 100px; margin-top: 1rem;">
+                        <div class="chart-bar" style="height: 80%;"></div>
+                        <div class="chart-bar" style="height: 85%;"></div>
+                        <div class="chart-bar" style="height: 82%;"></div>
+                        <div class="chart-bar" style="height: 90%;"></div>
+                        <div class="chart-bar" style="height: 92%;"></div>
+                        <div class="chart-bar" style="height: 94%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="card glass-card" style="margin-bottom: 2rem;">
+                <h2>AI Performance Trends</h2>
+                <p style="color: var(--text-light); margin-bottom: 1rem;">System efficiency over the last 6 months.</p>
+                <div class="chart-container" style="height: 300px;">
+                    <div class="chart-bar" style="height: 40%;"></div>
+                    <div class="chart-bar" style="height: 55%;"></div>
+                    <div class="chart-bar" style="height: 48%;"></div>
+                    <div class="chart-bar" style="height: 72%;"></div>
+                    <div class="chart-bar" style="height: 65%;"></div>
+                    <div class="chart-bar" style="height: 88%;"></div>
+                    <div class="chart-bar" style="height: 82%;"></div>
+                    <div class="chart-bar" style="height: 95%;"></div>
+                    <div class="chart-bar" style="height: 90%;"></div>
+                    <div class="chart-bar" style="height: 100%;"></div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="assets/js/utils.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('currentDate').textContent = getTodayString();
+        });
+    </script>
+</body>
+
+</html>

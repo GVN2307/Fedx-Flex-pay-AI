@@ -12,33 +12,14 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <style>
-        .sidebar {
-            background: #333;
-            color: white;
-        }
-
-        .sidebar .logo h2 {
-            color: white;
-        }
-
-        .sidebar nav ul li a {
-            color: #ccc;
-        }
-
-        .sidebar nav ul li.active a,
-        .sidebar nav ul li a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        /* Single Card Centered */
         .member-container {
-            max-width: 600px;
+            max-width: 700px;
             margin: 2rem auto;
         }
     </style>
@@ -48,9 +29,10 @@
 
     <div class="container">
         <!-- Sidebar (Simplified for Member) -->
-        <aside class="sidebar" style="width: 200px;">
+        <aside class="sidebar">
             <div class="logo">
-                <h2>FedEx <br><small style="font-size:0.8rem; font-weight:400; color:#ddd;">Member Portal</small></h2>
+                <h2><span class="fed">Fed</span><span class="ex">Ex</span> <span class="sub-logo">Member Portal</span>
+                </h2>
             </div>
             <nav>
                 <ul>
@@ -59,6 +41,13 @@
                     <li><a href="#" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </nav>
+            <div class="user-profile">
+                <div class="avatar">ME</div>
+                <div class="info">
+                    <p>Verified Member</p>
+                    <small>Standard Business</small>
+                </div>
+            </div>
         </aside>
 
         <!-- Main Content -->
