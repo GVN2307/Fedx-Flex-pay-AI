@@ -14,13 +14,34 @@ class FlexPayAI:
             (4, 17): "Founders Day" # April 17th
         }
 
+    def calculate_risk_score(self, history, balance):
+        """
+        Calculates a risk score (0-100) based on payment history and balance.
+        """
+        score = 50
+        
+        # History Factor
+        if history == 'Good':
+            score -= 30
+        elif history == 'Fair':
+            score += 10
+        elif history == 'Poor':
+            score += 40
+            
+        # Balance Factor
+        if balance > 1000:
+            score += 20
+        elif balance > 500:
+            score += 10
+            
+        return max(0, min(100, score))
+
     def analyze_account(self, account_data):
         """
         Analyzes the account data and generates a communication plan.
         """
         payment_history = account_data.get('payment_history')
         balance = account_data.get('current_balance', 0)
-        # Parse due date if needed, but for now passing it through
         
         # Risk Model Execution
         risk_score = self.calculate_risk_score(payment_history, balance)
@@ -58,13 +79,9 @@ class FlexPayAI:
         Checks if today is a major FedEx event.
         Returns (bool, event_name).
         """
-        # Check if today matches any event (ignoring year)
         key = (self.current_date.month, self.current_date.day)
-        
-        # Let's say "near" means same day for now, can extend to +/- range if requested
         if key in self.major_events:
             return True, self.major_events[key]
-        
         return False, None
 
     def generate_communication_plan(self, data, discount_code, is_anniversary, event_name):
@@ -94,7 +111,6 @@ class FlexPayAI:
         return "\n\n".join(lines)
 
 def main():
-    # Use absolute path to ensure data is found regardless of where script is run from
     script_dir = os.path.dirname(os.path.abspath(__file__))
     input_file = os.path.join(script_dir, 'input_data.json')
     
@@ -105,11 +121,6 @@ def main():
     with open(input_file, 'r') as f:
         data = json.load(f)
 
-    # For testing purposes, let's allow overriding the date to test the Anniversary logic
-    # Uncomment the line below to test April 17th logic
-    # ai = FlexPayAI(current_date=datetime.date(2026, 4, 17))
-    
-    # Standard run
     ai = FlexPayAI() 
 
     print("--- FedEx Flex-Pay AI Report ---\n")
