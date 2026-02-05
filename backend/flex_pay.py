@@ -11,7 +11,8 @@ class FlexPayAI:
         
         # Major FedEx Events configuration
         self.major_events = {
-            (4, 17): "Founders Day" # April 17th
+            (4, 17): "Founders Day", # April 17th
+            (12, 25): "Holiday Season" # Dec 25th
         }
 
     def calculate_risk_score(self, history, balance):

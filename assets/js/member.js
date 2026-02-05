@@ -1,17 +1,5 @@
-// Configuration (Duplicated from script.js or shared if we made a config.js)
-const majorEvents = {
-    "4-17": "Founders Day",
-    "12-25": "Holiday Season"
-};
-
-// Utils (Duplicated - in a real app would be shared)
-function formatDate(date) {
-    return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-}
-function getTodayString() {
-    const today = new Date();
-    return today.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
-}
+// majorEvents is now loaded from config.js
+// Shared utils are loaded from utils.js
 
 // Logic
 function analyzeAccount(account) {
@@ -39,24 +27,12 @@ function analyzeAccount(account) {
     return { suggestion, discountCode, messagePreview };
 }
 
-// Security: Escape HTML to prevent XSS
-function escapeHtml(text) {
-    if (text == null) return text;
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
 document.addEventListener('DOMContentLoaded', () => {
     // Session Check
     const role = localStorage.getItem('role');
     const userId = localStorage.getItem('user');
 
-    // In a real app we'd redirect if role !== 'user'. For demo, just check ID.
-    if (!userId) {
+    if (!userId || role !== 'user') {
         window.location.href = 'login.html';
         return;
     }
@@ -70,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
     }
 
-    // Set Header - TextContent is safe from XSS
+    // Set Header
     document.getElementById('welcomeMsg').textContent = `Welcome, ${account.name}`;
     document.getElementById('currentDate').textContent = getTodayString();
 
@@ -80,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const historyClass = escapeHtml(account.payment_history.toLowerCase());
 
     area.innerHTML = `
-        <div class="account-card ${historyClass}" style="background:white; padding:2rem; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid ${historyClass === 'good' ? '#00cc66' : (historyClass === 'fair' ? '#FF6600' : '#cc3300')}">
+        <div class="account-card ${historyClass}" style="background:white; padding:2rem; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid ${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))}">
             <div style="margin-bottom:1.5rem; border-bottom:1px solid #eee; padding-bottom:1rem;">
                 <h3 style="font-size:1.5rem; color:#333;">Current Billing Status</h3>
                 <span class="badge ${historyClass}" style="margin-top:5px; display:inline-block; font-size:0.9rem;">${escapeHtml(account.payment_history)} Standing</span>
@@ -99,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <strong>${escapeHtml(formatDate(account.due_date))}</strong>
             </div>
 
-            <div class="ai-suggestion" style="background:${historyClass === 'good' ? '#f0fff4' : '#fff9f0'}; padding:1.5rem; border-radius:8px; border:1px dashed ${historyClass === 'good' ? '#00cc66' : '#FF6600'};">
-                <h4 style="color:${historyClass === 'good' ? '#00cc66' : '#FF6600'}; margin-bottom:10px;"><i class="fas fa-envelope-open-text"></i> Message for You</h4>
+            <div class="ai-suggestion" style="background:${historyClass === 'good' ? '#f0fff4' : '#fff9f0'}; padding:1.5rem; border-radius:8px; border:1px dashed ${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))};">
+                <h4 style="color:${getRiskColor(calculateRiskScore(account.payment_history, account.current_balance))}; margin-bottom:10px;"><i class="fas fa-envelope-open-text"></i> Message for You</h4>
                 <p style="line-height:1.5;">${escapeHtml(analysis.messagePreview)}</p>
             </div>
 
@@ -109,5 +85,4 @@ document.addEventListener('DOMContentLoaded', () => {
             </button>
         </div>
     `;
-
 });

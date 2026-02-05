@@ -1,47 +1,8 @@
 // Note: 'accounts' array is now loaded from data.js
+// majorEvents is now loaded from config.js
+// Shared utils (formatDate, getTodayString, etc.) are loaded from utils.js
 
-// Configuration
-const majorEvents = {
-    "4-17": "Founders Day",
-    "12-25": "Holiday Season"
-};
-
-// Utils
-function formatDate(date) {
-    return new Date(date).toLocaleDateString('en-US', {
-        year: 'numeric', month: 'short', day: 'numeric'
-    });
-}
-
-function getTodayString() {
-    const today = new Date();
-    return today.toLocaleDateString('en-US', {
-        weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
-    });
-}
-
-// AI Core Logic (Frontend Version)
-function calculateRiskScore(history, balance) {
-    let score = 50;
-
-    // History Factor
-    if (history === 'Good') score -= 30;
-    else if (history === 'Fair') score += 10;
-    else if (history === 'Poor') score += 40;
-
-    // Balance Factor
-    if (balance > 1000) score += 20;
-    else if (balance > 500) score += 10;
-
-    return Math.max(0, Math.min(100, score));
-}
-
-function getRiskColor(score) {
-    if (score < 30) return '#00cc66'; // Low Risk (Green)
-    if (score < 70) return '#FF6600'; // Med Risk (Orange)
-    return '#cc3300';                 // High Risk (Red)
-}
-
+// AI Core Logic (Using shared utils)
 function analyzeAccount(account) {
     let suggestion = "";
     let discountCode = null;
@@ -50,7 +11,7 @@ function analyzeAccount(account) {
     const eventKey = `${today.getMonth() + 1}-${today.getDate()}`;
     const isAnniversary = majorEvents[eventKey];
 
-    // 1. Run Risk Model
+    // 1. Run Risk Model from utils.js
     const riskScore = calculateRiskScore(account.payment_history, account.current_balance);
 
     // Logic 1: Discount
@@ -72,24 +33,14 @@ function analyzeAccount(account) {
     return { suggestion, discountCode, messagePreview, riskScore };
 }
 
-// Security: Escape HTML to prevent XSS
-function escapeHtml(text) {
-    if (text == null) return text;
-    return String(text)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-}
-
 // Render
 document.addEventListener('DOMContentLoaded', () => {
     // Check for admin session (Basic Mock)
     const userRole = localStorage.getItem('role');
     if (userRole !== 'admin') {
-        // Uncomment to enforce login
-        // window.location.href = 'login.html'; 
+        // Enforced login for security
+        window.location.href = 'login.html';
+        return;
     }
 
     // Set Date
